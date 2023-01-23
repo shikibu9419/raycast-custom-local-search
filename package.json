@@ -1,0 +1,78 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "custom-local-search",
+  "title": "Custom Local Search",
+  "description": "Search your local directory",
+  "icon": "command-icon.png",
+  "author": "shikibu9419",
+  "license": "MIT",
+  "preferences": [
+    {
+      "title": "Serach Directory",
+      "name": "searchDir",
+      "description": "directory you want to search",
+      "type": "directory",
+      "required": true
+    }
+  ],
+  "commands": [
+    {
+      "name": "index",
+      "title": "Create New Search?",
+      "description": "ddddescription",
+      "mode": "view"
+    },
+    {
+      "name": "command-paperpile",
+      "title": "Search My Paperpile Files",
+      "description": "Search and open my file of Paperpile",
+      "mode": "view",
+      "preferences": [
+        {
+          "title": "Serach Directory",
+          "name": "searchDir",
+          "description": "directory you want to search",
+          "type": "directory",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "command-goodnotes",
+      "title": "Search My Goodnotes Files",
+      "description": "Search and open my file of Goodnotes",
+      "mode": "view",
+      "preferences": [
+        {
+          "title": "Serach Directory",
+          "name": "searchDir",
+          "description": "directory you want to search",
+          "type": "directory",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.46.0",
+    "glob": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.1",
+    "@types/node": "18.8.3",
+    "@types/react": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  }
+}

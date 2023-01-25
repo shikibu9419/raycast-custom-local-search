@@ -1,18 +1,31 @@
-import { ActionPanel, Action } from "@raycast/api";
-import { generateList } from "./utils";
+import { Action, ActionPanel, Color, getPreferenceValues, List, PreferenceValues } from "@raycast/api";
+import { glob } from "glob";
 
-const items = [
-  {
-    title: "Edit Search",
-    subtitle: "Edit Search",
-    actions: (
-      <ActionPanel>
-        <Action.OpenWith title="Open the project with your editor" path={} />
-      </ActionPanel>
-    ),
-  },
-];
+import Help from "./help";
+import { parsePath } from "./utils";
+
+const { targetDir, globPattern, parsePattern }: PreferenceValues = getPreferenceValues();
+const items = glob.sync(globPattern, { cwd: targetDir }).map((path) => parsePath(path, parsePattern));
 
 export default function Command() {
-  return generateList(items);
+  return (
+    <List>
+      {items.map((item, index) => (
+        <List.Item
+          key={index}
+          icon={{ source: item.icon, tintColor: Color.Blue }}
+          title={item.title}
+          subtitle={item.subtitle}
+          keywords={item.keywords}
+          actions={
+            <ActionPanel>
+              <Action.Open title="Open file" target={`${targetDir}/${item.path}`} />
+              <Action.CopyToClipboard title="Copy to Clipboard" content={`${targetDir}/${item.path}`} />
+              <Action.Push title="Help" target={<Help />} />
+            </ActionPanel>
+          }
+        />
+      ))}
+    </List>
+  );
 }

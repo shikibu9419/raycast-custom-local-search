@@ -6,48 +6,35 @@
   "icon": "command-icon.png",
   "author": "shikibu9419",
   "license": "MIT",
-  "preferences": [
-    {
-      "title": "Serach Directory",
-      "name": "searchDir",
-      "description": "directory you want to search",
-      "type": "directory",
-      "required": true
-    }
-  ],
   "commands": [
     {
       "name": "index",
-      "title": "Create New Search?",
-      "description": "ddddescription",
-      "mode": "view"
-    },
-    {
-      "name": "command-paperpile",
-      "title": "Search My Paperpile Files",
-      "description": "Search and open my file of Paperpile",
+      "title": "Search My Files",
+      "description": "Search my file",
       "mode": "view",
       "preferences": [
         {
           "title": "Serach Directory",
-          "name": "searchDir",
-          "description": "directory you want to search",
+          "name": "targetDir",
+          "description": "Directory you want to search",
+          "default": "~/Downloads",
           "type": "directory",
           "required": true
-        }
-      ]
-    },
-    {
-      "name": "command-goodnotes",
-      "title": "Search My Goodnotes Files",
-      "description": "Search and open my file of Goodnotes",
-      "mode": "view",
-      "preferences": [
+        },
         {
-          "title": "Serach Directory",
-          "name": "searchDir",
-          "description": "directory you want to search",
-          "type": "directory",
+          "title": "glob pattern",
+          "name": "globPattern",
+          "description": "description",
+          "type": "textfield",
+          "default": "*",
+          "required": true
+        },
+        {
+          "title": "match pattern",
+          "name": "parsePattern",
+          "description": "description",
+          "type": "textfield",
+          "default": "%t",
           "required": true
         }
       ]
